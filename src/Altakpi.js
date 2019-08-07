@@ -10,6 +10,11 @@ import {refRc} from './firebase/db';
 require('firebase/firestore');
 
 
+
+-esto es solo para ver si se realizo el cambio en el codigo
+como prueba final
+
+
 //const datos = firebase.database();
 //var uuid = require('uuid');
 //const ruta = firebase.firestore().collection('kpi/');
@@ -49,7 +54,7 @@ class Altakpi extends Component{
             const newState = [];
             for(const item in items){
                 newState.push({
-                   id: item, 
+                   id: item,
                    nombre: items[item].nombre,
                 });
             }
@@ -78,7 +83,7 @@ class Altakpi extends Component{
         } = this.state;
 
         console.log("Setea el estado");
-    
+
         db.doCreateKpi(nombre, descripcion, valInicial, valActual, valTarget, rc)
         .then(() => {
             this.setState({...INITIAL_STATE});
@@ -106,31 +111,31 @@ class Altakpi extends Component{
                     <h2>Creacion de KPI</h2>
                     <div>
                         <label>Nombre</label>
-                        <input type="text" 
+                        <input type="text"
                         value={nombre} onChange={event => this.setState(byPropKey('nombre', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Descripcion</label>
-                        <input type="text" 
+                        <input type="text"
                         value={descripcion} onChange={event => this.setState(byPropKey('descripcion', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Valor Inicial</label>
-                        <input type="text"  
+                        <input type="text"
                         value={valInicial} onChange={event => this.setState(byPropKey('valInicial', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Valor Actual</label>
-                        <input type="text" 
+                        <input type="text"
                         value={valActual} onChange={event => this.setState(byPropKey('valActual', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Valor Objetivo</label>
-                        <input type="text" 
+                        <input type="text"
                         value={valTarget} onChange={event => this.setState(byPropKey('valTarget', event.target.value))}
                         />
                     </div>
