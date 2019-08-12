@@ -87,6 +87,9 @@ class Altakpi extends Component{
         .catch(error => {
             this.setState(byPropKey('error', error))
         });
+
+        
+        //event.preventDefault();
     }
 
     render(){
@@ -100,6 +103,9 @@ class Altakpi extends Component{
             rc
         } = this.state;
 
+        //const isInvalid =
+        //nombre === '' || descripcion=== '' || valInicial === '' || valActual === '' || valTarget === '' || rc === '';
+ 
         return(
             <div>
                 <form onSubmit={this.onSubmit}>
@@ -118,26 +124,26 @@ class Altakpi extends Component{
                     </div>
                     <div>
                         <label>Valor Inicial</label>
-                        <input type="text"  
+                        <input type="number"  
                         value={valInicial} onChange={event => this.setState(byPropKey('valInicial', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Valor Actual</label>
-                        <input type="text" 
+                        <input type="number" 
                         value={valActual} onChange={event => this.setState(byPropKey('valActual', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Valor Objetivo</label>
-                        <input type="text" 
+                        <input type="number" 
                         value={valTarget} onChange={event => this.setState(byPropKey('valTarget', event.target.value))}
                         />
                     </div>
                     <div>
                         <label>Resultado Clave</label>
                         <select value={rc} onChange={event => this.setState(byPropKey('rc', event.target.value))}>
-                            <option>Ninguno</option>
+                            <option value="ninguno">Ninguno</option>
                             {this.state.items && this.state.items.map((item) => {return(<option>{item.nombre}</option>);})}
                         </select>
                     </div>

@@ -7,7 +7,7 @@ require("firebase/firestore");
 
 //var uuid = require('uuid');
 
-export const userRef = firebase.firestore().collection('rc');
+//export const userRef = firebase.firestore().collection('rc');
 
 export const refKpi = firebase.database().ref('kpi');
 //export const itemKpi = db.ref(`kpi/${uuid}`);
@@ -15,7 +15,7 @@ export const refRc = db.ref('rc');
 
 export const refOkr = db.ref('okr');
 
-export const doCreateKpi = (nombre, descripcion, valInicial, valActual, valTarget, rc) =>
+export const doCreateKpi = (uuid, nombre, descripcion, valInicial, valActual, valTarget, rc) =>
 db.ref('kpi').push({
     nombre,
     descripcion,
