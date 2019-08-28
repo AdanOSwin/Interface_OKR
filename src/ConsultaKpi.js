@@ -134,7 +134,7 @@ class ConsultaKpi extends Component{
         return(
             <div>
                 <section>
-                    <h3>Cnosulta KPI</h3>
+                    <h3>Consulta KPI</h3>
                     <div className="wrapper">
                         <table>
                             <tr>

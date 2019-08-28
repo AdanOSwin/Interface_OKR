@@ -12,6 +12,8 @@ require("firebase/firestore");
 export const refKpi = firebase.database().ref('kpi');
 //export const itemKpi = db.ref(`kpi/${uuid}`);
 export const refRc = db.ref('rc');
+export const refArea = db.ref('area');
+export const refUsers = db.ref('users');
 
 export const refOkr = db.ref('okr');
 
@@ -48,19 +50,28 @@ db.ref('okr').push({
     padre
 })
 
-export const consultaOkr = () =>
-refKpi.on('value', (snapshot) => {
-    const items = snapshot.val();
-    const newState = [];
-    for(const item in items){
-        newState.push({
-           id: item, 
-           nombre: items[item].nombre,
-        });
-    }
-    this.setState({
-        items:newState
-    });
-    console.log("KPI en altas");
-    console.log(newState);
+export const doCreateEquipo = (nombre, descripcion, area, jefe) =>
+db.ref('equipo/').push({
+    nombre,
+    descripcion,
+    area,
+    jefe
+});
+
+export const doCreateArea = (nombre, descripcion, jefe) =>
+db.ref('area').push({
+    nombre,
+    descripcion,
+    jefe,
+});
+
+export const doCreateUser = (nombre, apellido, email, pass1, tel, equipo, area) =>
+    db.ref('users').push({
+        nombre,
+        apellido,
+        email,
+        pass1,
+        tel,
+        equipo,
+        area
 });

@@ -30,37 +30,7 @@ class Toggle extends Component{
 
     }
 
-    /*removeOkr(uuid){
-        console.log("Madison");
-        const itemOkr = firebase.database().ref(`okr/${uuid}`);
-        console.log("Davenport");
-        itemOkr.remove();
-    }
-
-    componentDidMount(){
-        refOkr.on('value', (snapshot) => {
-            const items = snapshot.val();
-            const newState = [];
-            for(const item in items){
-                newState.push({
-                   id: item, 
-                   nombre: items[item].nombre,
-                   descripcion: items[item].descripcion,
-                   equipo: items[item].equipo,
-                   prioridad: items[item].prioridad,
-                   tipo: items[item].tipo,
-                   progreso: items[item].progreso,
-                   padre: items[item].padre 
-                });
-            }
-            this.setState({
-                items:newState
-            });
-            console.log("OKR");
-            console.log(newState);
-        });
-    }
-*/
+    
     toggle = () => {
         this.setState({
             on: !this.state.on

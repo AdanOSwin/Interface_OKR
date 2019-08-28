@@ -89,7 +89,7 @@ class AltaOkr extends Component{
         return(
             <div>
                 <h2>Creacion de Objetivo</h2>
-                <form onSubmit={this.onSubmit}>
+                <form className="formulario" onSubmit={this.onSubmit}>
                     <div>
                         <label>Nombre</label>
                         <input type="text" 

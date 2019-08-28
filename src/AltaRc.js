@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {db} from './firebase';
 import { refOkr } from './firebase/db';
+import {Button} from 'react-bootstrap';
 
 const INITIAL_STATE = {
     nombre: '',
@@ -89,7 +90,7 @@ class AltaRc extends Component{
         return(
             <div>
                 <h2>Creacion de Resultado Clave</h2>
-                <form onSubmit={this.onSubmit}>
+                <form className="formulario" onSubmit={this.onSubmit}>
                     <div>
                         <label>Nombre</label>
                         <input type="text" 

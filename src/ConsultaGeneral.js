@@ -5,6 +5,8 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import {refOkr, refRc} from './firebase/db';
 import './ConsultaOkr.css';
+import {ProgressBar} from 'react-bootstrap';
+//import ProgressBar from '@bit/react-bootstrap.react-bootstrap.progress-bar';
 
 const INITIAL_STATE = {
     nombre: '',
@@ -21,7 +23,7 @@ const byPropKey = (propertyName, value) => () => ({
     [propertyName]: value,
 });
 
-class ConsultaOkr extends Component{
+class ConsultaGlobal extends Component{
     constructor(props){
         super(props);
 
@@ -92,9 +94,6 @@ class ConsultaOkr extends Component{
         return(
             <div>
                 <section>
-                    <h2>
-                        Consulta OKR
-                    </h2>
                     <div className="wrapper">
                         <table>
                             <tr>
@@ -111,7 +110,7 @@ class ConsultaOkr extends Component{
                                             <td className="nombre">{item.nombre}</td>
                                             <td className="equipo">{item.equipo}</td>
                                             <td className="prioridad">{item.prioridad}</td>
-                                            <td className="progreso">{item.progreso}</td>
+                                            <td className="progreso"><ProgressBar now={30} /></td>
                                             <td className="Elimina"><button onClick={() => this.removeOkr(item.id)}>Eliminar</button></td>
                                             <td className="Edita"><button>Editar</button></td>
                                         </tr>
@@ -125,7 +124,7 @@ class ConsultaOkr extends Component{
                         <div>
                             <label>{dato.nombre}</label><br />
                             <label>{dato.inicial}</label><br />
-                            <label>{dato.actual}</label><br />
+                            <label><ProgressBar now={50} /></label><br />
                             <label>{dato.esperado}</label><br />
                             <label>{dato.target}</label><br /><br />
                             <label>{dato.inicio}</label><br />
@@ -133,10 +132,24 @@ class ConsultaOkr extends Component{
                             <label>{dato.okr}</label><br />
                         </div>
                     );
+                })};
+
+                <h3>Separador</h3>
+
+                {this.state.items && this.state.items.map && this.state.datos && this.state.datos.map((item, dato) =>{
+                    return(<div>
+                        <div>
+                        <h2>OKR</h2>
+                        <label>{item.nombre}</label>
+                        <br />
+                        </div>
+                        <h2>RC</h2>
+                        <label>{dato.nombre}</label><br />
+                        </div>);
                 })}
             </div>
         );
     }
 }
 
-export default ConsultaOkr;
+export default ConsultaGlobal;

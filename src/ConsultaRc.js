@@ -51,7 +51,7 @@ class ConsultaRc extends Component{
                    inicial: items[item].inicial,
                    actual: items[item].actual,
                    esperado: items[item].esperado,
-                   target: items[item].inicio,
+                   target: items[item].target,
                    termino: items[item].termino,
                    okr: items[item].okr 
                 });
@@ -72,22 +72,22 @@ class ConsultaRc extends Component{
                     <div className="wrapper">
                         <table>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Valor actual</th>
-                                <th> Valor esperado</th>
-                                <th>Valor objetivo</th>
-                                <th></th>
-                                <th></th>
+                                <th className="nombre">Nombre</th>
+                                <th className="Actual">Valor actual</th>
+                                <th className="Esperado"> Valor esperado</th>
+                                <th className="Target">Valor objetivo</th>
+                                <th className="Elimina"></th>
+                                <th className="Edita"></th>
                             </tr>
                             {this.state.items && this.state.items.map((item) => {
                                 return(
                                     <tr>
-                                        <td>{item.nombre}</td>
-                                        <td>{item.actual}</td>
-                                        <td>{item.esperado}</td>
-                                        <td>{item.objetivo}</td>
-                                        <td><button onClick={() => this.removeRc(item.id)}>Eliminar</button></td>
-                                        <td><button>Editar</button></td>
+                                        <td className="nombre">{item.nombre}</td>
+                                        <td className="Actual">{item.actual}</td>
+                                        <td className="Esperado">{item.esperado}</td>
+                                        <td className="Target">{item.target}</td>
+                                        <td className="Elimina"><button onClick={() => this.removeRc(item.id)}>Eliminar</button></td>
+                                        <td className="Edita"><button>Editar</button></td>
                                     </tr>       
                                 );
                             })}
