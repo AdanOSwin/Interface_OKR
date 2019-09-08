@@ -37,9 +37,11 @@ class Okr extends Component{
             </div>
             </Toggle>
             </div>
-            <div>
-                <label>Consulta global</label>
+            <div className="general">
                 <ConsultaGlobal />
+            </div>
+            <div> 
+
             </div>
             </div>
         );

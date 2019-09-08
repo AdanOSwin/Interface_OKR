@@ -5,7 +5,8 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import {refOkr, refRc} from './firebase/db';
 import './ConsultaOkr.css';
-
+import {Redirect} from 'react-router-dom';
+import EditaOkr from './EditaOkr';
 const INITIAL_STATE = {
     nombre: '',
     descripcion: '',
@@ -15,6 +16,7 @@ const INITIAL_STATE = {
     progreso: '',
     padre: '',
     error: null,
+    redirect: false,
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -31,6 +33,18 @@ class ConsultaOkr extends Component{
 
         this.componentDidMount = this.componentDidMount.bind(this);
         this.removeOkr = this.removeOkr.bind(this);
+    }
+
+    setRedirect = () =>{
+        this.setState({
+            redirect: true
+        });
+    }
+
+    renderRedirect = () => {
+        if(this.state.redirect){
+            return <Redirect to='/EditaOkr' Component={EditaOkr} />
+        }
     }
 
     removeOkr(uuid){
@@ -113,27 +127,13 @@ class ConsultaOkr extends Component{
                                             <td className="prioridad">{item.prioridad}</td>
                                             <td className="progreso">{item.progreso}</td>
                                             <td className="Elimina"><button onClick={() => this.removeOkr(item.id)}>Eliminar</button></td>
-                                            <td className="Edita"><button>Editar</button></td>
+                                            <td className="Edita"><button onClick={this.setRedirect}>Editar</button></td>
                                         </tr>
                                 );
                             })}
                         </table>
                     </div>
                 </section>
-                {this.state.datos && this.state.datos.map((dato) => {
-                    return(
-                        <div>
-                            <label>{dato.nombre}</label><br />
-                            <label>{dato.inicial}</label><br />
-                            <label>{dato.actual}</label><br />
-                            <label>{dato.esperado}</label><br />
-                            <label>{dato.target}</label><br /><br />
-                            <label>{dato.inicio}</label><br />
-                            <label>{dato.termino}</label><br />
-                            <label>{dato.okr}</label><br />
-                        </div>
-                    );
-                })}
             </div>
         );
     }
